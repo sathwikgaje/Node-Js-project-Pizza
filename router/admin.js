@@ -70,7 +70,7 @@ router.post('/food_items/add',upload.single('uploaded_file'),authenticateAdmin,a
         type: req.body.type,
     });
     await items.save();
-    res.redirect('/admin/food_items');
+    res.redirect('/food_items');
 });
 
 router.post('/food_items/update',authenticateAdmin,async (req,res)=>{
@@ -84,13 +84,13 @@ router.post('/food_items/update',authenticateAdmin,async (req,res)=>{
     items.category = req.body.category;
     items.type = req.body.type;
     await items.save();
-    res.redirect('/admin/food_items');
+    res.redirect('/food_items');
 });
 
 router.post('/food_items/remove',authenticateAdmin,async (req,res)=>{
     var id = req.body.id;
     await Food_item.deleteOne({_id:id});
-    res.redirect('/admin/food_items');
+    res.redirect('/food_items');
 });
 
 function authenticateAdmin(req,res,next) {
