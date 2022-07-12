@@ -26,10 +26,10 @@ router.get('/',async(req,res)=>{
             itemids.push(i.item_id);
         });
     }
-    const pizza = await Food_item.find({category:'Pizza'});
-    const burger = await Food_item.find({category:'Burger'});
-    const juice = await Food_item.find({category:'Juice'});
-    const pasta = await Food_item.find({category:'Pasta'});
+    let pizza = await Food_item.find({category:'Pizza'});
+    let burger = await Food_item.find({category:'Burger'});
+    let juice = await Food_item.find({category:'Juice'});
+    let pasta = await Food_item.find({category:'Pasta'});
     res.render('pages/index',{pizza:pizza,burger:burger,juice:juice,pasta:pasta,logged:logged,itemids:itemids,count:count,message:req.flash('message')});
 });
 

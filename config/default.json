@@ -1,10 +1,10 @@
 {
-    "PORT":"",
-    "jwtPrivateKey":"",
-    "adminName":"",
-    "adminEmail": "",
-    "adminPhone":"",
-    "adminPassword":"",
+    "PORT":"8000",
+    "jwtPrivateKey":"jwtPrivateKey",
+    "adminName":"sathwik",
+    "adminEmail": "sathwik.gaje@gmail.com",
+    "adminPhone":"0123456789",
+    "adminPassword":"sathwik",
     "admin":"true",
-    "db":""
+    "db":"mongodb://localhost:27017"
 }

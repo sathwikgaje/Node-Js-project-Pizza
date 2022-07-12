@@ -51,6 +51,10 @@ if(!config.get('admin')){
     process.exit(1);
 }
 
+mongoose.connect(config.get('db'))
+    .then(()=>console.log('Connected to database'))
+    .catch((err)=>console.error('Not connected to database',err))
+
 const app = express();
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended:true}));
@@ -74,9 +78,6 @@ app.listen(port);
 app.set('view engine','ejs');
 console.log("Server Started");
 console.log(`Running on port${port}`);
-mongoose.connect(config.get('db'))
-    .then(()=>console.log('Connected to database'))
-    .catch((err)=>console.error('Not connected to database',err))
 
 bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(config.get('adminPassword'), salt, async function(err, hash) {
