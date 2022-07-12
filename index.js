@@ -51,7 +51,7 @@ if(!config.get('admin')){
     process.exit(1);
 }
 
-mongoose.connect('mongodb://localhost/temp')
+mongoose.connect(config.get('db'))
     .then(()=>console.log('Connected to database'))
     .catch((err)=>console.error('Not connected to database',err))
 

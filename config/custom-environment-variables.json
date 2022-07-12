@@ -4,5 +4,6 @@
     "adminName":"adminName",
     "adminEmail": "adminEmail",
     "adminPhone":"adminPhone",
-    "adminPassword":"adminPassword"
+    "adminPassword":"adminPassword",
+    "db":"db"
 }
