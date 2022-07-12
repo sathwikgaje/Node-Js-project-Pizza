@@ -70,19 +70,24 @@ router.post('/remove_quantity',(req,res)=>{
 });
 
 function authenticateToken(req,res,next) {
-    const token = req.cookies.token;
+    if(req.cookies.token){
+        const token = req.cookies.token;
     if (token == null) {
         req.flash('message','Login to Contiune');
-        res.redirect('/');
+        res.redirect('/products');
     }
-    jwt.verify (token,config.get('jwtPrivateKey'),(err, user) => {
+    jwt.verify(token,config.get('jwtPrivateKey'),(err, user) => {
     if (err) {
         req.flash('message','Login to Contiune');
-        res.redirect('/');
+        res.redirect('/products');
     }
     req.user = user;
     next();
     });
+    }else{
+        req.flash('message','Login to Contiune');
+        res.redirect('/products');
+    }
 }
 
 module.exports = router;
