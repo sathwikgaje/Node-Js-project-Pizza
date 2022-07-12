@@ -1,5 +1,4 @@
 {
-    "PORT":"PORT",
     "jwtPrivateKey":"jwtPrivateKey",
     "adminName":"adminName",
     "adminEmail": "adminEmail",

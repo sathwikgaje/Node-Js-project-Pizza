@@ -73,9 +73,11 @@ app.use('/',home);
 app.use('/user',user);
 app.use('/cart',cart);
 app.use('/admin',admin);
-app.listen(config.get('PORT'));
+const port = process.env.PORT;
+app.listen(port);
 app.set('view engine','ejs');
 console.log("Server Started");
+console.log(`Running on port${port}`);
 
 bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(config.get('adminPassword'), salt, async function(err, hash) {
