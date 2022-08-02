@@ -52,16 +52,23 @@ router.post('/login',async (req,res)=>{
         res.redirect('/login')
     }
     hash = user.password;
-    bcrypt.compare(req.body.password, hash, function(err, result) {
+    const p = new Promise((reslove,reject)=>{
+        bcrypt.compare(req.body.password, hash, function(err, result) {
+             reslove(result)
+        });
+    })
+    p.then(result=>{
         if(!result) {
             req.flash('message','Invaild Password');
             res.redirect('/login')
-        } 
-    });
-    const token = user.generateAuthToken();
-    res.cookie('token',token);
-    req.flash('message','Logged In Successfully');
-    res.redirect('/cart');
+        }
+        else{
+            const token = user.generateAuthToken();
+            res.cookie('token',token);
+            req.flash('message','Logged In Successfully');
+            res.redirect('/cart');
+        }
+    })
 });
 
 router.get('/logout',(req,res)=>{
